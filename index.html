@@ -1,0 +1,2444 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白桃少女 - 官方品牌门户 | 少女感生活影像社区</title>
+  <meta name="description" content="白桃少女官方网站，一个专注于少女感生活方式的视频品牌社区。这里有原创高清短片、创作者故事与温暖的日常记录，持续为观众带来真实、多元、有品质的内容。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23f7b8c8'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23fff4f7'/%3E%3Cpath d='M50 35 Q60 50 50 65 Q40 50 50 35Z' fill='%23f2849e'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #faf7f9;
+      --surface: #ffffff;
+      --surface-soft: #fdf0f4;
+      --primary: #e8638c;
+      --primary-dark: #c94a72;
+      --primary-light: #fbd3e0;
+      --accent: #b77dc1;
+      --text-strong: #2d2027;
+      --text: #4a3a44;
+      --text-muted: #897a83;
+      --line: #f0dfe7;
+      --shadow: 0 12px 40px rgba(180, 110, 140, 0.12);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --header-h: 64px;
+      --announce-h: 40px;
+      --sticky-offset: 104px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--sticky-offset);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    .peach-container {
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* ---- 吸顶区 ---- */
+    .peach-sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .peach-announce {
+      background: linear-gradient(90deg, #e8638c, #b77dc1);
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      height: var(--announce-h);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .peach-announce__inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .peach-announce__inner::-webkit-scrollbar { display: none; }
+
+    .peach-announce__tag {
+      background: rgba(255,255,255,0.22);
+      border-radius: 100px;
+      padding: 2px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      flex-shrink: 0;
+    }
+
+    .peach-announce__text {
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .peach-header {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      height: var(--header-h);
+    }
+
+    .peach-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      gap: 20px;
+    }
+
+    .peach-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: 0.01em;
+      color: var(--text-strong);
+      flex-shrink: 0;
+    }
+
+    .peach-logo__mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffd6e3, #e8638c);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+
+    .peach-logo__mark svg { width: 20px; height: 20px; }
+
+    .peach-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .peach-nav__link {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 100px;
+      transition: color .2s, background .2s;
+    }
+
+    .peach-nav__link:hover,
+    .peach-nav__link.is-active {
+      color: var(--primary-dark);
+      background: var(--surface-soft);
+    }
+
+    .peach-header__tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .peach-search {
+      display: flex;
+      align-items: center;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      padding: 3px 4px 3px 14px;
+      gap: 4px;
+    }
+
+    .peach-search__input {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      width: 150px;
+      color: var(--text);
+      outline: none;
+    }
+
+    .peach-search__input::placeholder { color: #c3aeb8; }
+
+    .peach-search__btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      transition: background .2s;
+    }
+
+    .peach-search__btn:hover { background: var(--primary-dark); }
+
+    .peach-menu-toggle {
+      display: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      place-items: center;
+      background: var(--surface);
+    }
+
+    .peach-menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--text-strong);
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: .25s;
+    }
+
+    /* ---- 首屏 ---- */
+    .peach-hero {
+      padding: 52px 0 40px;
+    }
+
+    .peach-hero__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 5fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .peach-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      background: var(--surface-soft);
+      border: 1px solid #f4d9e3;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .peach-kicker::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .peach-hero__title {
+      font-size: clamp(36px, 5.2vw, 62px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-strong);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .peach-hero__title em {
+      font-style: normal;
+      color: var(--primary-dark);
+      position: relative;
+    }
+
+    .peach-hero__desc {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      max-width: 46ch;
+      margin-bottom: 26px;
+    }
+
+    .peach-hero__desc strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .peach-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .peach-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 100px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      line-height: 1.3;
+    }
+
+    .peach-btn:hover { transform: translateY(-2px); }
+
+    .peach-btn--primary {
+      background: linear-gradient(120deg, #e8638c, #b77dc1);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(232, 99, 140, 0.3);
+    }
+
+    .peach-btn--primary:hover { box-shadow: 0 12px 30px rgba(232, 99, 140, 0.38); }
+
+    .peach-btn--ghost {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(140, 90, 110, 0.05);
+    }
+
+    .peach-btn--ghost:hover { border-color: var(--primary-light); }
+
+    .peach-hero__stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .peach-stat__num {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-strong);
+      letter-spacing: -0.02em;
+    }
+
+    .peach-stat__num span { color: var(--primary); }
+
+    .peach-stat__label {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .peach-hero__visual {
+      position: relative;
+    }
+
+    .peach-hero__frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 4 / 3.4;
+      background: var(--surface);
+      border: 5px solid #fff;
+    }
+
+    .peach-hero__frame svg { width: 100%; height: 100%; }
+
+    .peach-hero__badge {
+      position: absolute;
+      bottom: -18px;
+      left: -18px;
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+    }
+
+    .peach-hero__badge-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--surface-soft);
+      display: grid;
+      place-items: center;
+      color: var(--primary-dark);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .peach-hero__badge strong { display: block; font-size: 14px; color: var(--text-strong); }
+    .peach-hero__badge small { font-size: 11.5px; color: var(--text-muted); }
+
+    /* ---- 通用区块 ---- */
+    .peach-section {
+      padding: 56px 0;
+    }
+
+    .peach-section--soft {
+      background: linear-gradient(180deg, var(--surface-soft), var(--bg));
+    }
+
+    .peach-section__head {
+      margin-bottom: 34px;
+      max-width: 640px;
+    }
+
+    .peach-section__eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .peach-section__title {
+      font-size: clamp(24px, 3.2vw, 34px);
+      line-height: 1.25;
+      color: var(--text-strong);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .peach-section__title em {
+      font-style: normal;
+      color: var(--primary-dark);
+    }
+
+    .peach-section__sub {
+      margin-top: 10px;
+      font-size: 14.5px;
+      color: var(--text-muted);
+    }
+
+    /* ---- 焦点内容 ---- */
+    .peach-feature-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .peach-feature-main {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .peach-feature-main__visual {
+      aspect-ratio: 16 / 9;
+      background: #f9e4ec;
+    }
+
+    .peach-feature-main__visual svg { width: 100%; height: 100%; }
+
+    .peach-feature-main__body {
+      padding: 24px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .peach-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--surface-soft);
+      color: var(--primary-dark);
+      border: 1px solid #f4d9e3;
+    }
+
+    .peach-feature-main__title {
+      font-size: 21px;
+      line-height: 1.35;
+      font-weight: 800;
+      color: var(--text-strong);
+    }
+
+    .peach-feature-main__desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .peach-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .peach-meta__author {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .peach-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .peach-avatar--a { background: linear-gradient(135deg, #f2849e, #b77dc1); }
+    .peach-avatar--b { background: linear-gradient(135deg, #7fb8d4, #5b8ea8); }
+    .peach-avatar--c { background: linear-gradient(135deg, #e8a865, #d4823a); }
+    .peach-avatar--d { background: linear-gradient(135deg, #9bc48a, #6a9e58); }
+    .peach-avatar--e { background: linear-gradient(135deg, #c99ad8, #8c56a0); }
+
+    .peach-feature-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .peach-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      padding: 7px 14px;
+      border-radius: 100px;
+      background: var(--surface-soft);
+      color: var(--text);
+      border: 1px solid transparent;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+
+    .peach-action-btn:hover { border-color: var(--primary-light); }
+
+    .peach-action-btn.is-liked {
+      background: #fde3eb;
+      color: var(--primary-dark);
+    }
+
+    .peach-action-btn.is-saved {
+      background: #f3e6fa;
+      color: #8c56a0;
+    }
+
+    .peach-feature-side {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .peach-feature-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .peach-feature-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 26px rgba(180, 110, 140, 0.1);
+    }
+
+    .peach-feature-item__thumb {
+      width: 84px;
+      height: 64px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--surface-soft);
+    }
+
+    .peach-feature-item__thumb svg { width: 100%; height: 100%; }
+
+    .peach-feature-item__body { min-width: 0; }
+
+    .peach-feature-item__title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .peach-feature-item__meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ---- 视频列表 ---- */
+    .peach-video-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(160, 100, 130, 0.06);
+    }
+
+    .peach-video-row {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) auto;
+      gap: 16px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+      transition: background .2s;
+    }
+
+    .peach-video-row:last-child { border-bottom: none; }
+    .peach-video-row:hover { background: #fffafc; }
+
+    .peach-video-row__index {
+      font-size: 22px;
+      font-weight: 800;
+      color: #e7c9d5;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      padding-top: 2px;
+    }
+
+    .peach-video-row__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .peach-video-row__title:hover { color: var(--primary-dark); }
+
+    .peach-video-row__desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .peach-video-row__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .peach-video-row__actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 4px;
+    }
+
+    .peach-icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      display: grid;
+      place-items: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: .2s;
+      flex-shrink: 0;
+    }
+
+    .peach-icon-btn:hover { border-color: var(--primary-light); color: var(--primary-dark); }
+    .peach-icon-btn.is-liked { background: #fde3eb; border-color: #f5bcd0; color: var(--primary-dark); }
+    .peach-icon-btn.is-saved { background: #f3e6fa; border-color: #e0c6ec; color: #8c56a0; }
+
+    /* ---- 专题 & 品牌故事 ---- */
+    .peach-special-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .peach-special-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .peach-special-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(180, 110, 140, 0.12); }
+
+    .peach-special-card__tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .peach-special-card__title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-strong);
+      line-height: 1.35;
+    }
+
+    .peach-special-card__desc { font-size: 13px; color: var(--text-muted); }
+
+    .peach-special-card__items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-top: 1px dashed var(--line);
+      padding-top: 12px;
+      margin-top: 2px;
+    }
+
+    .peach-special-card__items li {
+      font-size: 12.5px;
+      color: var(--text);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .peach-special-card__items li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--primary-light);
+    }
+
+    .peach-special-card__status {
+      margin-top: auto;
+      font-size: 11.5px;
+      color: var(--primary-dark);
+      background: var(--surface-soft);
+      border-radius: 100px;
+      padding: 4px 10px;
+      align-self: flex-start;
+    }
+
+    /* ---- 品牌解析长文 ---- */
+    .peach-essay {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      padding: 36px clamp(20px, 4vw, 48px);
+      box-shadow: 0 6px 26px rgba(160, 100, 130, 0.05);
+    }
+
+    .peach-essay h3 {
+      font-size: 19px;
+      color: var(--text-strong);
+      margin: 26px 0 10px;
+      font-weight: 800;
+    }
+
+    .peach-essay h3:first-child { margin-top: 0; }
+
+    .peach-essay p {
+      font-size: 14.5px;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.85;
+    }
+
+    .peach-essay p:last-child { margin-bottom: 0; }
+
+    .peach-essay strong { color: var(--primary-dark); }
+
+    /* ---- 创作者矩阵（双列简介） ---- */
+    .peach-creator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .peach-creator-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .peach-creator-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(180, 110, 140, 0.1); }
+
+    .peach-creator-card__avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,0.55);
+    }
+
+    .peach-creator-card__body { min-width: 0; }
+
+    .peach-creator-card__name {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-strong);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .peach-creator-card__field {
+      font-size: 11.5px;
+      color: var(--primary-dark);
+      background: var(--surface-soft);
+      border-radius: 100px;
+      padding: 2px 9px;
+      font-weight: 600;
+    }
+
+    .peach-creator-card__nums {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 4px 0 8px;
+      display: flex;
+      gap: 14px;
+    }
+
+    .peach-creator-card__bio {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .peach-creator-card__link {
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .peach-creator-card__link:hover { text-decoration: underline; }
+
+    /* ---- 用户评价（双列短评） ---- */
+    .peach-comment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .peach-comment-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .peach-comment-card__head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .peach-comment-card__name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-strong);
+    }
+
+    .peach-comment-card__meta {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .peach-comment-card__text {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .peach-comment-card__stars {
+      color: #e8a865;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    /* ---- 数据榜单 ---- */
+    .peach-board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .peach-board__col {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .peach-board__title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-strong);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .peach-board__title span {
+      font-size: 11px;
+      color: var(--primary-dark);
+      background: var(--surface-soft);
+      border-radius: 100px;
+      padding: 2px 8px;
+      font-weight: 600;
+    }
+
+    .peach-board__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .peach-board__list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .peach-board__rank {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--surface-soft);
+      color: var(--primary-dark);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .peach-board__list li:nth-child(1) .peach-board__rank { background: #fde3eb; }
+    .peach-board__list li:nth-child(2) .peach-board__rank { background: #f3e6fa; }
+    .peach-board__list li:nth-child(3) .peach-board__rank { background: #e6f0fa; }
+
+    .peach-board__name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .peach-board__score { font-size: 11.5px; color: var(--text-muted); }
+
+    /* ---- 动态 & FAQ ---- */
+    .peach-two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .peach-news {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .peach-news__item {
+      display: flex;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      transition: transform .2s;
+    }
+
+    .peach-news__item:hover { transform: translateX(4px); }
+
+    .peach-news__date {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: var(--surface-soft);
+      border-radius: 8px;
+      padding: 6px 9px;
+      height: fit-content;
+      flex-shrink: 0;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .peach-news__date small { display: block; font-size: 10px; font-weight: 500; color: var(--text-muted); }
+
+    .peach-news__body { min-width: 0; }
+
+    .peach-news__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: 4px;
+    }
+
+    .peach-news__text { font-size: 12.5px; color: var(--text-muted); }
+
+    .peach-faq { display: flex; flex-direction: column; gap: 10px; }
+
+    .peach-faq details {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 0 18px;
+      transition: background .2s;
+    }
+
+    .peach-faq details[open] { background: #fffafc; border-color: #f4d9e3; }
+
+    .peach-faq summary {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-strong);
+      padding: 15px 0;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .peach-faq summary::-webkit-details-marker { display: none; }
+    .peach-faq summary::after {
+      content: "+";
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 400;
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+
+    .peach-faq details[open] summary::after { transform: rotate(45deg); }
+
+    .peach-faq__answer {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    /* ---- 合作墙 ---- */
+    .peach-partners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .peach-partner {
+      flex: 1 1 150px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-strong);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .peach-partner:hover { border-color: var(--primary-light); transform: translateY(-2px); }
+
+    .peach-partner__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ---- 投稿 CTA ---- */
+    .peach-cta {
+      background: linear-gradient(120deg, #fdeff4, #f3e7fa);
+      border: 1px solid #f0d9e6;
+      border-radius: var(--radius-lg);
+      padding: 38px clamp(22px, 5vw, 52px);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .peach-cta__title {
+      font-size: clamp(20px, 2.6vw, 27px);
+      font-weight: 800;
+      color: var(--text-strong);
+      margin-bottom: 6px;
+    }
+
+    .peach-cta__desc { font-size: 14px; color: var(--text-muted); }
+
+    /* ---- 页脚 ---- */
+    .peach-footer {
+      background: #2d2027;
+      color: #cbb8c3;
+      padding: 48px 0 26px;
+      margin-top: 30px;
+    }
+
+    .peach-footer__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .peach-footer__brand {
+      font-size: 19px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 12px;
+    }
+
+    .peach-footer__brand-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e8638c, #b77dc1);
+    }
+
+    .peach-footer__desc { font-size: 13px; line-height: 1.8; max-width: 34ch; }
+
+    .peach-footer__col h4 {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .peach-footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .peach-footer__col a { font-size: 13px; color: #b5a0ac; transition: color .2s; }
+    .peach-footer__col a:hover { color: #fff; }
+
+    .peach-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      color: #9b8792;
+    }
+
+    /* ---- 回到顶部 ---- */
+    .peach-backtop {
+      position: fixed;
+      right: 22px;
+      bottom: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      color: var(--primary-dark);
+      font-size: 18px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .25s, transform .25s;
+      z-index: 90;
+    }
+
+    .peach-backtop.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .peach-backtop:hover { background: var(--surface-soft); }
+
+    /* ---- 弹窗/Toast ---- */
+    .peach-modal-mask {
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 32, 39, 0.45);
+      backdrop-filter: blur(4px);
+      display: none;
+      place-items: center;
+      z-index: 200;
+      padding: 20px;
+    }
+
+    .peach-modal-mask.is-open { display: grid; }
+
+    .peach-modal {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      max-width: 460px;
+      width: 100%;
+      padding: 30px clamp(20px, 4vw, 34px);
+      box-shadow: 0 30px 70px rgba(45, 32, 39, 0.25);
+      position: relative;
+      animation: peachPop .28s ease;
+    }
+
+    @keyframes peachPop {
+      from { opacity: 0; transform: translateY(16px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .peach-modal__close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--surface-soft);
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .peach-modal__title { font-size: 20px; font-weight: 800; color: var(--text-strong); margin-bottom: 8px; }
+
+    .peach-modal__text { font-size: 13.5px; color: var(--text-muted); margin-bottom: 18px; }
+
+    .peach-modal__field {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 11px 14px;
+      font-size: 13.5px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--surface-soft);
+      outline: none;
+      margin-bottom: 12px;
+      resize: vertical;
+    }
+
+    .peach-modal__field:focus { border-color: var(--primary-light); background: #fff; }
+
+    .peach-modal__actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+    .peach-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 34px;
+      transform: translate(-50%, 20px);
+      background: var(--text-strong);
+      color: #fff;
+      font-size: 13px;
+      padding: 10px 22px;
+      border-radius: 100px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s, transform .25s;
+      z-index: 300;
+      white-space: nowrap;
+      max-width: calc(100vw - 40px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .peach-toast.is-show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ---- 响应式 ---- */
+    @media (max-width: 960px) {
+      .peach-hero__grid { grid-template-columns: 1fr; gap: 30px; }
+      .peach-feature-grid { grid-template-columns: 1fr; }
+      .peach-special-grid { grid-template-columns: 1fr; }
+      .peach-creator-grid { grid-template-columns: 1fr; }
+      .peach-comment-grid { grid-template-columns: 1fr; }
+      .peach-board { grid-template-columns: 1fr; }
+      .peach-two-col { grid-template-columns: 1fr; }
+      .peach-footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .peach-nav { display: none; }
+      .peach-nav.is-open {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        padding: 14px 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        box-shadow: 0 16px 30px rgba(160, 100, 130, 0.12);
+      }
+      .peach-header { position: relative; }
+      .peach-menu-toggle { display: grid; }
+      .peach-search__input { width: 100px; }
+      .peach-video-row { grid-template-columns: 40px minmax(0, 1fr); }
+      .peach-video-row__actions { grid-column: 1 / -1; padding-top: 0; }
+      .peach-video-row__index { font-size: 18px; }
+      .peach-footer__grid { grid-template-columns: 1fr; gap: 22px; }
+      .peach-hero__badge { left: 8px; bottom: -14px; }
+      .peach-cta { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .peach-header__tools .peach-search { display: none; }
+      .peach-hero { padding-top: 36px; }
+      .peach-section { padding: 40px 0; }
+      .peach-feature-item__thumb { width: 70px; height: 54px; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- S1 公告条 + 页头（吸顶） -->
+  <div class="peach-sticky-wrap">
+    <div class="peach-announce" role="region" aria-label="网站公告">
+      <div class="peach-announce__inner">
+        <span class="peach-announce__tag">更新</span>
+        <p class="peach-announce__text">「秋日限定」专题已上线 6 支原创短片&nbsp;·&nbsp;创作者扶持计划第 3 期开放报名&nbsp;·&nbsp;白桃少女官方周边第二弹开启预约</p>
+      </div>
+    </div>
+    <header class="peach-header">
+      <div class="peach-container peach-header__inner">
+        <a href="#hero" class="peach-logo" aria-label="白桃少女官方首页">
+          <span class="peach-logo__mark">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 4 Q16 10 12 17 Q8 10 12 4Z" fill="#fff"/>
+              <circle cx="12" cy="19" r="2" fill="#fde3eb"/>
+            </svg>
+          </span>
+          白桃少女
+        </a>
+        <nav class="peach-nav" id="peachMainNav" aria-label="主导航">
+          <a class="peach-nav__link" href="#feature">焦点视频</a>
+          <a class="peach-nav__link" href="#videos">热门内容</a>
+          <a class="peach-nav__link" href="#special">专题企划</a>
+          <a class="peach-nav__link" href="#creators">创作者</a>
+          <a class="peach-nav__link" href="#comments">社区口碑</a>
+          <a class="peach-nav__link" href="#faq">帮助</a>
+        </nav>
+        <div class="peach-header__tools">
+          <form class="peach-search" id="peachSearchForm" role="search" aria-label="站内搜索">
+            <input class="peach-search__input" id="peachSearchInput" type="search" placeholder="搜索视频 / 创作者" aria-label="搜索关键词">
+            <button class="peach-search__btn" type="submit" aria-label="提交搜索">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            </button>
+          </form>
+          <button class="peach-menu-toggle" id="peachMenuToggle" aria-label="展开导航菜单" aria-expanded="false" aria-controls="peachMainNav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- S2 品牌首屏 -->
+    <section class="peach-hero" id="hero">
+      <div class="peach-container peach-hero__grid">
+        <div>
+          <span class="peach-kicker">白桃少女 · 官方网站</span>
+          <h1 class="peach-hero__title">白桃少女<em>免费在线观看</em>的少女感影像社区</h1>
+          <p class="peach-hero__desc">
+            作为国内专注少女感生活方式的视频品牌，白桃少女官方网站致力于为创作者与观众搭建<strong>高品质内容生态</strong>。我们以原创、真实、温暖的影像记录成长中的细碎光亮，持续提供高清、专业、值得信赖的免费在线观看体验。从日常记录到人物访谈，从城市探索到创作幕后，这里聚集了一群认真生活的人。
+          </p>
+          <div class="peach-hero__actions">
+            <a class="peach-btn peach-btn--primary" href="#feature">
+              立即观看
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </a>
+            <a class="peach-btn peach-btn--ghost" href="#creators">认识创作者</a>
+            <button class="peach-btn peach-btn--ghost" type="button" id="peachShareBtn">分享官网</button>
+          </div>
+          <div class="peach-hero__stats">
+            <div class="peach-stat">
+              <div class="peach-stat__num" data-count="1286">1286<span>+</span></div>
+              <div class="peach-stat__label">原创高清短片</div>
+            </div>
+            <div class="peach-stat">
+              <div class="peach-stat__num" data-count="320">320<span>万</span></div>
+              <div class="peach-stat__label">社区用户共同观看</div>
+            </div>
+            <div class="peach-stat">
+              <div class="peach-stat__num" data-count="96">96<span>%</span></div>
+              <div class="peach-stat__label">用户口碑好评率</div>
+            </div>
+          </div>
+        </div>
+        <div class="peach-hero__visual">
+          <div class="peach-hero__frame">
+            <svg viewBox="0 0 600 510" role="img" aria-label="白桃少女品牌主视觉：粉紫色渐变背景中一位少女抱着白桃坐在窗边，画面有柔和光晕与几何装饰">
+              <defs>
+                <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fde3eb"/>
+                  <stop offset="55%" stop-color="#f0c9dd"/>
+                  <stop offset="100%" stop-color="#d9b8e8"/>
+                </linearGradient>
+                <linearGradient id="heroPeach" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ffd6e3"/>
+                  <stop offset="100%" stop-color="#f2849e"/>
+                </linearGradient>
+                <radialGradient id="heroGlow" cx="50%" cy="40%" r="50%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="600" height="510" fill="url(#heroBg)"/>
+              <circle cx="470" cy="90" r="120" fill="#ffffff" opacity="0.28"/>
+              <circle cx="110" cy="420" r="90" fill="#b77dc1" opacity="0.16"/>
+              <ellipse cx="300" cy="300" rx="190" ry="150" fill="url(#heroGlow)"/>
+              <!-- 窗框 -->
+              <rect x="90" y="80" width="250" height="300" rx="14" fill="#fffafc" opacity="0.65"/>
+              <rect x="110" y="100" width="210" height="260" rx="8" fill="#f8dfea" opacity="0.6"/>
+              <line x1="215" y1="100" x2="215" y2="360" stroke="#ffffff" stroke-width="6" opacity="0.7"/>
+              <line x1="110" y1="230" x2="320" y2="230" stroke="#ffffff" stroke-width="6" opacity="0.7"/>
+              <!-- 人物 -->
+              <circle cx="330" cy="230" r="46" fill="#ffe4d6"/>
+              <path d="M286 222 Q286 168 336 168 Q384 168 382 222 Q374 198 336 196 Q298 198 286 222Z" fill="#6b4a5a"/>
+              <path d="M284 240 Q286 205 310 198 Q330 210 348 198 Q374 210 380 242 Q376 270 352 280 Q330 288 306 278 Q288 268 284 240Z" fill="#7d5668"/>
+              <circle cx="316" cy="234" r="4" fill="#4a3a44"/>
+              <circle cx="346" cy="234" r="4" fill="#4a3a44"/>
+              <path d="M322 250 Q330 258 340 250" stroke="#c94a72" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M270 320 Q300 270 340 296 Q380 270 404 322 L404 380 L266 380Z" fill="#f7b8c8"/>
+              <path d="M300 340 Q330 356 360 338" stroke="#e8638c" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+              <!-- 手中的桃子 -->
+              <circle cx="386" cy="296" r="30" fill="url(#heroPeach)"/>
+              <path d="M386 266 Q396 276 386 288 Q376 276 386 266Z" fill="#7da86b"/>
+              <circle cx="378" cy="290" r="6" fill="#ffffff" opacity="0.5"/>
+              <!-- 装饰 -->
+              <circle cx="120" cy="150" r="10" fill="#f2849e" opacity="0.5"/>
+              <circle cx="500" cy="330" r="16" fill="#ffffff" opacity="0.4"/>
+              <rect x="470" y="380" width="46" height="46" rx="12" fill="#b77dc1" opacity="0.3"/>
+              <circle cx="80" cy="60" r="7" fill="#ffffff" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="peach-hero__badge">
+            <span class="peach-hero__badge-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+            </span>
+            <div>
+              <strong>官方认证内容</strong>
+              <small>正版高清 · 持续运营</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M2 焦点内容 -->
+    <section class="peach-section" id="feature">
+      <div class="peach-container">
+        <div class="peach-section__head">
+          <div class="peach-section__eyebrow">Editor's Pick</div>
+          <h2 class="peach-section__title">本周焦点 · <em>白桃少女</em>精选影像</h2>
+          <p class="peach-section__sub">由官方编辑团队与社区创作者共同推荐，精选高清原创内容，呈现真实动人的少女感故事。</p>
+        </div>
+        <div class="peach-feature-grid">
+          <article class="peach-feature-main">
+            <div class="peach-feature-main__visual">
+              <svg viewBox="0 0 640 360" role="img" aria-label="焦点视频《把秋天装进玻璃罐》封面：少女在窗前制作果酱，橙色阳光洒入厨房">
+                <defs>
+                  <linearGradient id="focusBg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#f8e9d8"/>
+                    <stop offset="100%" stop-color="#f0c9a8"/>
+                  </linearGradient>
+                  <linearGradient id="focusJar" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f7b8c8"/>
+                    <stop offset="100%" stop-color="#e8638c"/>
+                  </linearGradient>
+                </defs>
+                <rect width="640" height="360" fill="url(#focusBg)"/>
+                <circle cx="520" cy="70" r="80" fill="#fff3e3" opacity="0.75"/>
+                <rect x="0" y="260" width="640" height="100" fill="#e8c8a8" opacity="0.55"/>
+                <rect x="80" y="70" width="170" height="200" rx="10" fill="#fffaf0" opacity="0.8"/>
+                <line x1="165" y1="70" x2="165" y2="270" stroke="#e8c8a8" stroke-width="5"/>
+                <line x1="80" y1="170" x2="250" y2="170" stroke="#e8c8a8" stroke-width="5"/>
+                <circle cx="380" cy="170" r="42" fill="#ffe4d6"/>
+                <path d="M340 166 Q340 118 384 118 Q424 118 422 166 Q414 142 382 140 Q350 142 340 166Z" fill="#6b4a5a"/>
+                <path d="M338 190 Q340 155 362 148 Q380 158 398 148 Q420 158 424 190 Q420 216 398 226 Q380 232 360 224 Q342 214 338 190Z" fill="#7d5668"/>
+                <circle cx="366" cy="184" r="3.6" fill="#4a3a44"/>
+                <circle cx="394" cy="184" r="3.6" fill="#4a3a44"/>
+                <path d="M372 198 Q380 204 390 198" stroke="#c94a72" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+                <path d="M330 290 Q356 240 386 262 Q416 240 440 290 L440 360 L326 360Z" fill="#f7b8c8"/>
+                <!-- 玻璃罐 -->
+                <rect x="452" y="190" width="78" height="110" rx="14" fill="url(#focusJar)" opacity="0.85"/>
+                <rect x="442" y="178" width="98" height="22" rx="8" fill="#fff0f4"/>
+                <circle cx="472" cy="222" r="9" fill="#ffffff" opacity="0.55"/>
+                <circle cx="500" cy="248" r="12" fill="#ffffff" opacity="0.4"/>
+                <rect x="496" y="270" width="50" height="30" rx="6" fill="#fff0f4" opacity="0.75"/>
+                <text x="502" y="290" font-size="12" fill="#c94a72" font-family="sans-serif" font-weight="700">白桃</text>
+                <circle cx="540" cy="310" r="14" fill="#f2849e" opacity="0.65"/>
+                <circle cx="580" cy="300" r="9" fill="#f2849e" opacity="0.45"/>
+              </svg>
+            </div>
+            <div class="peach-feature-main__body">
+              <div>
+                <span class="peach-tag">日常记录</span>
+                <span class="peach-tag">治愈影像</span>
+              </div>
+              <h3 class="peach-feature-main__title">把秋天装进玻璃罐：白桃果酱与窗边的午后</h3>
+              <p class="peach-feature-main__desc">在白桃少女的厨房里，秋天被慢火熬煮成琥珀色的果酱。这是一支关于季节、手作与独处时光的原创短片，全片自然光拍摄，记录从挑选白桃到封罐的完整过程，适合在安静的午后反复观看。</p>
+              <div class="peach-meta">
+                <span class="peach-meta__author">
+                  <span class="peach-avatar peach-avatar--a">桃</span>
+                  桃子汽水
+                </span>
+                <span>播放 24.6 万</span>
+                <span>点赞 3.2 万</span>
+                <span>收藏 1.8 万</span>
+                <span>更新于 11 月 18 日</span>
+              </div>
+              <div class="peach-feature-actions">
+                <button class="peach-action-btn" data-like type="button" aria-pressed="false">♡ 点赞 <span data-like-count>32045</span></button>
+                <button class="peach-action-btn" data-save type="button" aria-pressed="false">☆ 收藏 <span data-save-count>18022</span></button>
+                <button class="peach-action-btn" data-comment-open type="button">💬 评论</button>
+                <button class="peach-action-btn" data-copy type="button">🔗 复制链接</button>
+              </div>
+            </div>
+          </article>
+          <div class="peach-feature-side">
+            <article class="peach-feature-item">
+              <div class="peach-feature-item__thumb">
+                <svg viewBox="0 0 84 64" role="img" aria-label="《地铁尽头的花店》缩略图：粉紫色老街道地铁出口旁有一间花店">
+                  <rect width="84" height="64" fill="#e8d6f0"/>
+                  <rect x="10" y="30" width="64" height="30" rx="4" fill="#f6effa"/>
+                  <rect x="18" y="38" width="18" height="22" rx="2" fill="#d8b8e8"/>
+                  <circle cx="30" cy="30" r="8" fill="#f2849e"/>
+                  <circle cx="52" cy="34" r="6" fill="#f7b8c8"/>
+                  <rect x="58" y="42" width="14" height="18" rx="2" fill="#c9a8dc"/>
+                  <line x1="10" y1="30" x2="74" y2="30" stroke="#b77dc1" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="peach-feature-item__body">
+                <h3 class="peach-feature-item__title">地铁尽头的花店：城市探索中的温柔坐标</h3>
+                <p class="peach-feature-item__meta">城市探索 · 播放 18.3 万 · 阿桃的镜头</p>
+              </div>
+            </article>
+            <article class="peach-feature-item">
+              <div class="peach-feature-item__thumb">
+                <svg viewBox="0 0 84 64" role="img" aria-label="《一件旧毛衣的第二次生命》缩略图：蓝灰色背景中一件被拆解的旧毛衣和毛线球">
+                  <rect width="84" height="64" fill="#d9e6ee"/>
+                  <path d="M28 18 L56 18 L62 46 Q42 56 22 46Z" fill="#e8a8b8"/>
+                  <path d="M28 18 L56 18" stroke="#b77dc1" stroke-width="2"/>
+                  <circle cx="60" cy="48" r="10" fill="#f7b8c8"/>
+                  <path d="M58 58 Q54 62 50 58" stroke="#b77dc1" stroke-width="2" fill="none"/>
+                </svg>
+              </div>
+              <div class="peach-feature-item__body">
+                <h3 class="peach-feature-item__title">一件旧毛衣的第二次生命：旧物改造手记</h3>
+                <p class="peach-feature-item__meta">手作DIY · 播放 9.7 万 · 软糖不软</p>
+              </div>
+            </article>
+            <article class="peach-feature-item">
+              <div class="peach-feature-item__thumb">
+                <svg viewBox="0 0 84 64" role="img" aria-label="《第一次独居的 30 平米》缩略图：暖光下的小房间与窗边绿植">
+                  <rect width="84" height="64" fill="#f8e9d8"/>
+                  <rect x="14" y="20" width="34" height="34" rx="3" fill="#fdf0f4"/>
+                  <rect x="20" y="26" width="22" height="16" rx="2" fill="#cfe8d8"/>
+                  <circle cx="31" cy="34" r="5" fill="#9bc48a"/>
+                  <rect x="54" y="34" width="18" height="20" rx="2" fill="#f0c9a8"/>
+                  <circle cx="63" cy="30" r="7" fill="#7da86b"/>
+                </svg>
+              </div>
+              <div class="peach-feature-item__body">
+                <h3 class="peach-feature-item__title">第一次独居的 30 平米：小空间收纳实录</h3>
+                <p class="peach-feature-item__meta">家居收纳 · 播放 13.1 万 · 七七与植物</p>
+              </div>
+            </article>
+            <article class="peach-feature-item">
+              <div class="peach-feature-item__thumb">
+                <svg viewBox="0 0 84 64" role="img" aria-label="《和妈妈一起做青梅酒》缩略图：绿色青梅与玻璃瓶在桌面上">
+                  <rect width="84" height="64" fill="#e6f0d9"/>
+                  <rect x="26" y="18" width="30" height="38" rx="6" fill="#d9eaf0" opacity="0.8"/>
+                  <circle cx="36" cy="42" r="7" fill="#8fb86a"/>
+                  <circle cx="46" cy="44" r="6" fill="#9bc48a"/>
+                  <circle cx="42" cy="32" r="6" fill="#8fb86a"/>
+                  <rect x="22" y="14" width="38" height="8" rx="4" fill="#fdf0f4"/>
+                  <circle cx="66" cy="30" r="5" fill="#cfe8d8"/>
+                </svg>
+              </div>
+              <div class="peach-feature-item__body">
+                <h3 class="peach-feature-item__title">和妈妈一起做青梅酒：两代人的厨房对话</h3>
+                <p class="peach-feature-item__meta">人物访谈 · 播放 8.4 万 · 桃子汽水</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M3 热门视频流（单列图文列表） -->
+    <section class="peach-section peach-section--soft" id="videos">
+      <div class="peach-container">
+        <div class="peach-section__head">
+          <div class="peach-section__eyebrow">Trending Now</div>
+          <h2 class="peach-section__title">热门<em>白桃少女</em>视频流</h2>
+          <p class="peach-section__sub">社区正在观看的原创精品内容，覆盖日常记录、经验分享与创作幕后，持续更新中。</p>
+        </div>
+        <div class="peach-video-list">
+          <div class="peach-video-row">
+            <div class="peach-video-row__index">01</div>
+            <div>
+              <h3 class="peach-video-row__title">如何在出租屋布置一间「白桃色」卧室</h3>
+              <p class="peach-video-row__desc">从配色到软装，用 15 分钟讲清楚低预算改造思路，附可下载的配色清单与购物思路分享。</p>
+              <div class="peach-video-row__meta">
+                <span class="peach-tag">家居收纳</span>
+                <span>作者：七七与植物</span>
+                <span>播放 21.5 万</span>
+                <span>点赞 1.9 万</span>
+              </div>
+            </div>
+            <div class="peach-video-row__actions">
+              <button class="peach-icon-btn" data-like type="button" aria-label="点赞该视频" aria-pressed="false">♡</button>
+              <button class="peach-icon-btn" data-save type="button" aria-label="收藏该视频" aria-pressed="false">☆</button>
+              <button class="peach-icon-btn" data-comment-open type="button" aria-label="打开评论">💬</button>
+            </div>
+          </div>
+          <div class="peach-video-row">
+            <div class="peach-video-row__index">02</div>
+            <div>
+              <h3 class="peach-video-row__title">每周一束：用超市花材做一桌春天</h3>
+              <p class="peach-video-row__desc">花艺师阿桃分享三种零基础插花思路，强调“先看光线，再选花器”，适合在周末的午后跟着练习。</p>
+              <div class="peach-video-row__meta">
+                <span class="peach-tag">生活方式</span>
+                <span>作者：阿桃的镜头</span>
+                <span>播放 17.2 万</span>
+                <span>点赞 1.5 万</span>
+              </div>
+            </div>
+            <div class="peach-video-row__actions">
+              <button class="peach-icon-btn" data-like type="button" aria-label="点赞该视频" aria-pressed="false">♡</button>
+              <button class="peach-icon-btn" data-save type="button" aria-label="收藏该视频" aria-pressed="false">☆</button>
+              <button class="peach-icon-btn" data-comment-open type="button" aria-label="打开评论">💬</button>
+            </div>
+          </div>
+          <div class="peach-video-row">
+            <div class="peach-video-row__index">03</div>
+            <div>
+              <h3 class="peach-video-row__title">剪辑入门：把碎片素材剪成一支治愈短片</h3>
+              <p class="peach-video-row__desc">从素材整理、节奏卡点到音乐选择，完整拆解一支 60 秒短片的制作流程，附剪辑思路清单可下载。</p>
+              <div class="peach-video-row__meta">
+                <span class="peach-tag">创作幕后</span>
+                <span>作者：软糖不软</span>
+                <span>播放 14.8 万</span>
+                <span>点赞 2.1 万</span>
+              </div>
+            </div>
+            <div class="peach-video-row__actions">
+              <button class="peach-icon-btn" data-like type="button" aria-label="点赞该视频" aria-pressed="false">♡</button>
+              <button class="peach-icon-btn" data-save type="button" aria-label="收藏该视频" aria-pressed="false">☆</button>
+              <button class="peach-icon-btn" data-comment-open type="button" aria-label="打开评论">💬</button>
+            </div>
+          </div>
+          <div class="peach-video-row">
+            <div class="peach-video-row__index">04</div>
+            <div>
+              <h3 class="peach-video-row__title">周末去郊外：一条河的散步地图</h3>
+              <p class="peach-video-row__desc">带上相机与便当，沿着城郊小河记录秋天的颜色。无解说、无旁白，只有风声与脚步声的治愈影像。</p>
+              <div class="peach-video-row__meta">
+                <span class="peach-tag">城市探索</span>
+                <span>作者：半糖去冰</span>
+                <span>播放 11.6 万</span>
+                <span>点赞 9600</span>
+              </div>
+            </div>
+            <div class="peach-video-row__actions">
+              <button class="peach-icon-btn" data-like type="button" aria-label="点赞该视频" aria-pressed="false">♡</button>
+              <button class="peach-icon-btn" data-save type="button" aria-label="收藏该视频" aria-pressed="false">☆</button>
+              <button class="peach-icon-btn" data-comment-open type="button" aria-label="打开评论">💬</button>
+            </div>
+          </div>
+          <div class="peach-video-row">
+            <div class="peach-video-row__index">05</div>
+            <div>
+              <h3 class="peach-video-row__title">从 0 到 1 的社团招新短片是怎么拍出来的</h3>
+              <p class="peach-video-row__desc">完整复盘校园社团招新片的策划、分工与拍摄现场，适合学生团队参考，文末附拍摄分镜表思路。</p>
+              <div class="peach-video-row__meta">
+                <span class="peach-tag">教程干货</span>
+                <span>作者：七七与植物</span>
+                <span>播放 9.3 万</span>
+                <span>点赞 8700</span>
+              </div>
+            </div>
+            <div class="peach-video-row__actions">
+              <button class="peach-icon-btn" data-like type="button" aria-label="点赞该视频" aria-pressed="false">♡</button>
+              <button class="peach-icon-btn" data-save type="button" aria-label="收藏该视频" aria-pressed="false">☆</button>
+              <button class="peach-icon-btn" data-comment-open type="button" aria-label="打开评论">💬</button>
+            </div>
+          </div>
+          <div class="peach-video-row">
+            <div class="peach-video-row__index">06</div>
+            <div>
+              <h3 class="peach-video-row__title">在 24 小时便利店里读完一本书</h3>
+              <p class="peach-video-row__desc">一次深夜读书实验：选择便利店作为阅读空间，观察城市夜晚的细节，并记录阅读时的情绪变化。</p>
+              <div class="peach-video-row__meta">
+                <span class="peach-tag">情感故事</span>
+                <span>作者：半糖去冰</span>
+                <span>播放 8.1 万</span>
+                <span>点赞 7200</span>
+              </div>
+            </div>
+            <div class="peach-video-row__actions">
+              <button class="peach-icon-btn" data-like type="button" aria-label="点赞该视频" aria-pressed="false">♡</button>
+              <button class="peach-icon-btn" data-save type="button" aria-label="收藏该视频" aria-pressed="false">☆</button>
+              <button class="peach-icon-btn" data-comment-open type="button" aria-label="打开评论">💬</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M4 专题企划 -->
+    <section class="peach-section" id="special">
+      <div class="peach-container">
+        <div class="peach-section__head">
+          <div class="peach-section__eyebrow">Special Projects</div>
+          <h2 class="peach-section__title">专题企划 · <em>白桃少女</em>的持续叙事</h2>
+          <p class="peach-section__sub">以专题为单位持续深耕少女感生活方式内容，让每一支短片都成为更完整叙事的一部分。</p>
+        </div>
+        <div class="peach-special-grid">
+          <article class="peach-special-card">
+            <span class="peach-special-card__tag">秋日限定</span>
+            <h3 class="peach-special-card__title">「把秋天收进房间」影像企划</h3>
+            <p class="peach-special-card__desc">围绕季节变化展开的居家与手作影像，记录光线、温度与慢下来的生活节奏。</p>
+            <ul class="peach-special-card__items">
+              <li>白桃果酱与窗边的午后</li>
+              <li>用一条毯子改变房间的氛围</li>
+              <li>傍晚六点的阳台阅读计划</li>
+            </ul>
+            <span class="peach-special-card__status">更新中 · 已上线 6 支</span>
+          </article>
+          <article class="peach-special-card">
+            <span class="peach-special-card__tag">创作者访谈</span>
+            <h3 class="peach-special-card__title">「她们为什么拿起相机」系列</h3>
+            <p class="peach-special-card__desc">聚焦女性创作者的创作动机与真实日常，以访谈和幕后影像呈现创作者的成长路径。</p>
+            <ul class="peach-special-card__items">
+              <li>阿桃：记录花店之前，先学会观察光</li>
+              <li>软糖：剪辑是重新理解素材的过程</li>
+              <li>半糖：在通勤路上练习取景</li>
+            </ul>
+            <span class="peach-special-card__status">更新中 · 已上线 4 支</span>
+          </article>
+          <article class="peach-special-card">
+            <span class="peach-special-card__tag">社区共创</span>
+            <h3 class="peach-special-card__title">「一分钟日常」投稿挑战</h3>
+            <p class="peach-special-card__desc">面向所有社区用户开放的主题征集，用一分钟记录生活里值得被记住的小瞬间。</p>
+            <ul class="peach-special-card__items">
+              <li>征集主题：我的桌面与一杯热饮</li>
+              <li>投稿规则：原创拍摄 · 时长 60 秒内</li>
+              <li>展示方式：官方评选 + 社区投票</li>
+            </ul>
+            <span class="peach-special-card__status">报名中 · 截止 12 月 20 日</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- M15 品牌深度解析（关键词解析 800+ 字） -->
+    <section class="peach-section peach-section--soft" id="brandstory">
+      <div class="peach-container">
+        <div class="peach-section__head">
+          <div class="peach-section__eyebrow">Brand Story</div>
+          <h2 class="peach-section__title">读懂<em>白桃少女</em>：从品牌理念到内容生态</h2>
+          <p class="peach-section__sub">白桃少女官方网站的深度内容解析，了解我们为何坚持原创与真实，以及我们如何持续建设品质内容社区。</p>
+        </div>
+        <div class="peach-essay">
+          <h3>一、从「白桃」出发：品牌名的气质与定位</h3>
+          <p>「白桃少女」这个名字，最早来自创始人团队对夏天的一次共同记忆：桌上放着刚洗好的白桃，果皮透出淡淡的粉，窗外是蝉鸣与树影。那种清甜、短暂、需要被认真对待的感觉，成了品牌的起点。作为一家持续运营的视频品牌，我们把自己定位为少女感生活影像社区，而不是单纯的视频聚合平台。所谓少女感，与年龄无关，它是一种观察世界的方式：对日常保有好奇，对细节保持耐心，对真实的情绪不刻意回避。在<strong>白桃少女官方网站</strong>，你看到的每一支短片都要经过选题、拍摄、剪辑与内容审核环节，确保画面品质与价值观一致。我们坚持原创与正版，所有上架内容均由创作者授权发布，拒绝搬运与低质拼贴，这是企业级内容生态的基本底线。</p>
+          <h3>二、内容体系：日常、手艺与成长的三条主线</h3>
+          <p>白桃少女的内容体系围绕三条主线展开。第一条是日常记录：它看起来最普通，却最需要真诚。我们会鼓励创作者拍摄清晨的鸟叫、午后的一杯茶、下班路上的一段晚霞，但要求画面有明确的观察角度，而不是随手拍。第二条是手艺与技能：从果酱、插花、旧物改造到剪辑入门，这些内容承担了<strong>教程干货</strong>与<strong>实用技巧</strong>的功能，帮助用户在看视频之后还能带走可操作的方法。第三条是成长与陪伴：人物访谈、独居记录、社团招新幕后等，关注人在不同阶段的状态变化。为了保证内容的持续供给，我们建立了选题池与反馈机制，社区用户可以通过投稿入口提交拍摄线索，运营团队每周汇总一次，通过投票与内部评审确定拍摄优先级。这种机制让内容生态不是单向输出，而是创作者与观众共同参与搭建的社区。对于希望被更多人看见的创作者，<strong>白桃少女</strong>提供从拍摄建议、标题优化到发布节奏的完整支持，也会定期组织线上分享，让经验流动起来。</p>
+          <h3>三、品质与口碑：企业级运营背后的具体动作</h3>
+          <p>视频品牌官网如果只谈气质，很容易变空。白桃少女选择把「品质」拆成可执行的动作。第一，画质与声音标准：所有官方推荐内容要求至少 1080P 输出，环境音与配乐音量经过基础校准，确保高清与舒适观看。第二，内容分级与标签：每支视频至少标注 1 个内容标签与 1 个情绪标签，方便用户筛选，也让创作者逐渐形成自己的风格识别。第三，社区规则与反馈通道：用户可以对内容提出反馈，官方在 48 小时内处理，涉及版权与不适内容的投诉会优先响应。第四，数据透明：播放、点赞、收藏数据在页面公开展示，榜单按周期更新，让优质内容被持续发现。我们相信，<strong>用户至上</strong>不是口号，而是把每一个细节做得更耐心一点。正因为这些具体动作，白桃少女逐渐积累了值得信赖的社区口碑，也让更多企业与合作方愿意参与共建。我们始终认为，视频品牌的价值不在某一条爆款，而在于持续运营中形成的稳定品质与真实关系。</p>
+          <h3>四、社区与未来：让创作回到真实生活现场</h3>
+          <p>白桃少女的社区并不是一个流量竞技场。我们更希望它像一个开放的工作室：有人分享作品，有人提供建议，有人只是安静地看完一支短片然后点一个收藏。未来一年，我们会把更多资源投入到线下创作营与主题展映上，让创作者在真实空间里见面交流；同时继续完善投稿与评审机制，增加新人曝光位，让更多普通人的影像被看见。对于观众而言，<strong>白桃少女免费在线观看</strong>的体验会保持高清、稳定与无干扰；对于创作者而言，官方网站的创作者中心会逐步开放更多工具与数据能力。我们相信，一个品牌能走多远，取决于它是否愿意与用户一起成长。从一支果酱短片开始，到一座持续运转的内容社区，白桃少女会继续记录那些看似微小却值得被认真对待的瞬间。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- M5 创作者矩阵（双列简介） -->
+    <section class="peach-section" id="creators">
+      <div class="peach-container">
+        <div class="peach-section__head">
+          <div class="peach-section__eyebrow">Creators</div>
+          <h2 class="peach-section__title">与<em>白桃少女</em>同行的创作者</h2>
+          <p class="peach-section__sub">他们用镜头记录真实生活，用作品回应社区期待。点击创作者卡片可查看简介详情。</p>
+        </div>
+        <div class="peach-creator-grid">
+          <article class="peach-creator-card">
+            <div class="peach-creator-card__avatar peach-avatar--a">桃</div>
+            <div class="peach-creator-card__body">
+              <h3 class="peach-creator-card__name">桃子汽水 <span class="peach-creator-card__field">日常记录</span></h3>
+              <div class="peach-creator-card__nums"><span>作品 86</span><span>粉丝 12.4 万</span></div>
+              <p class="peach-creator-card__bio">擅长拍摄食物与厨房场景，镜头节奏舒缓，喜欢在自然光下完成拍摄。她认为日常影像最重要的是不打扰被拍的人与物，其次才是构图。作品曾入选白桃少女季度精选，并参与官方专题拍摄。</p>
+              <button class="peach-creator-card__link" data-author-open data-author="桃子汽水" type="button">查看创作者档案 →</button>
+            </div>
+          </article>
+          <article class="peach-creator-card">
+            <div class="peach-creator-card__avatar peach-avatar--b">阿</div>
+            <div class="peach-creator-card__body">
+              <h3 class="peach-creator-card__name">阿桃的镜头 <span class="peach-creator-card__field">城市探索</span></h3>
+              <div class="peach-creator-card__nums"><span>作品 64</span><span>粉丝 9.7 万</span></div>
+              <p class="peach-creator-card__bio">常年在城市里步行与拍摄，对光线和街道纹理非常敏感。作品多用固定镜头与自然声，追求“像走路一样自然”的观看体验，并乐于分享路线与取景心得。</p>
+              <button class="peach-creator-card__link" data-author-open data-author="阿桃的镜头" type="button">查看创作者档案 →</button>
+            </div>
+          </article>
+          <article class="peach-creator-card">
+            <div class="peach-creator-card__avatar peach-avatar--c">软</div>
+            <div class="peach-creator-card__body">
+              <h3 class="peach-creator-card__name">软糖不软 <span class="peach-creator-card__field">创作幕后</span></h3>
+              <div class="peach-creator-card__nums"><span>作品 52</span><span>粉丝 8.3 万</span></div>
+              <p class="peach-creator-card__bio">剪辑师出身，擅长把零散素材组织成有情绪的叙事。视频中常出现详细的操作步骤与思路拆解，适合想学习影像表达的新手反复观看。</p>
+              <button class="peach-creator-card__link" data-author-open data-author="软糖不软" type="button">查看创作者档案 →</button>
+            </div>
+          </article>
+          <article class="peach-creator-card">
+            <div class="peach-creator-card__avatar peach-avatar--d">七</div>
+            <div class="peach-creator-card__body">
+              <h3 class="peach-creator-card__name">七七与植物 <span class="peach-creator-card__field">家居收纳</span></h3>
+              <div class="peach-creator-card__nums"><span>作品 73</span><span>粉丝 10.1 万</span></div>
+              <p class="peach-creator-card__bio">专注小空间改造与植物养护，视频里经常出现她自己动手做的小家具。她相信整理空间就是整理心情，愿意把每一次尝试都完整记录。</p>
+              <button class="peach-creator-card__link" data-author-open data-author="七七与植物" type="button">查看创作者档案 →</button>
+            </div>
+          </article>
+          <article class="peach-creator-card">
+            <div class="peach-creator-card__avatar peach-avatar--e">半</div>
+            <div class="peach-creator-card__body">
+              <h3 class="peach-creator-card__name">半糖去冰 <span class="peach-creator-card__field">情感故事</span></h3>
+              <div class="peach-creator-card__nums"><span>作品 41</span><span>粉丝 6.8 万</span></div>
+              <p class="peach-creator-card__bio">擅长用安静的影像讲情绪，作品常常只有环境声和少量旁白。她喜欢在通勤路上寻找拍摄灵感，认为真实的生活比剧本更动人。</p>
+              <button class="peach-creator-card__link" data-author-open data-author="半糖去冰" type="button">查看创作者档案 →</button>
+            </div>
+          </article>
+          <article class="peach-creator-card">
+            <div class="peach-creator-card__avatar peach-avatar--a">桃</div>
+            <div class="peach-creator-card__body">
+              <h3 class="peach-creator-card__name">青禾手记 <span class="peach-creator-card__field">手作DIY</span></h3>
+              <div class="peach-creator-card__nums"><span>作品 38</span><span>粉丝 5.2 万</span></div>
+              <p class="peach-creator-card__bio">手工爱好者，喜欢把旧物变成新的日常用品。她的视频里有大量细节特写与材料说明，希望让观众在观看后也能动手尝试一次。</p>
+              <button class="peach-creator-card__link" data-author-open data-author="青禾手记" type="button">查看创作者档案 →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- M8 用户评价（双列短评） + M14 榜单 -->
+    <section class="peach-section peach-section--soft" id="comments">
+      <div class="peach-container">
+        <div class="peach-section__head">
+          <div class="peach-section__eyebrow">Community Voice</div>
+          <h2 class="peach-section__title">社区口碑与<em>白桃少女</em>榜单</h2>
+          <p class="peach-section__sub">来自社区的真实评价与周期性榜单，让优质内容被持续看见，也让品牌与用户保持对话。</p>
+        </div>
+        <div class="peach-two-col" style="margin-bottom:28px;">
+          <div class="peach-comment-grid">
+            <article class="peach-comment-card">
+              <div class="peach-comment-card__head">
+                <span class="peach-avatar peach-avatar--b">林</span>
+                <div>
+                  <div class="peach-comment-card__name">林间小鹿</div>
+                  <div class="peach-comment-card__meta">关注 8 个月</div>
+                </div>
+              </div>
+              <p class="peach-comment-card__text">每次打开白桃少女都觉得心里安静下来。视频不长，但能看出是认真拍的，尤其喜欢那种没有太多解说、只有环境声的片子。</p>
+              <div class="peach-comment-card__stars">★★★★★</div>
+            </article>
+            <article class="peach-comment-card">
+              <div class="peach-comment-card__head">
+                <span class="peach-avatar peach-avatar--c">南</span>
+                <div>
+                  <div class="peach-comment-card__name">南风慢递</div>
+                  <div class="peach-comment-card__meta">关注 1 年</div>
+                </div>
+              </div>
+              <p class="peach-comment-card__text">剪辑教程对我帮助很大，步骤讲得细，不是那种只放成品让人羡慕的内容。看完能自己动手试一遍，这点很加分。</p>
+              <div class="peach-comment-card__stars">★★★★★</div>
+            </article>
+            <article class="peach-comment-card">
+              <div class="peach-comment-card__head">
+                <span class="peach-avatar peach-avatar--d">桉</span>
+                <div>
+                  <div class="peach-comment-card__name">桉树与猫</div>
+                  <div class="peach-comment-card__meta">关注 6 个月</div>
+                </div>
+              </div>
+              <p class="peach-comment-card__text">希望以后能有更多关于独居生活的专题，很喜欢七七那期小空间改造，看完真的动手整理了房间。</p>
+              <div class="peach-comment-card__stars">★★★★☆</div>
+            </article>
+            <article class="peach-comment-card">
+              <div class="peach-comment-card__head">
+                <span class="peach-avatar peach-avatar--a">桃</span>
+                <div>
+                  <div class="peach-comment-card__name">桃子味汽水</div>
+                  <div class="peach-comment-card__meta">关注 3 个月</div>
+                </div>
+              </div>
+              <p class="peach-comment-card__text">喜欢这里的审美和节奏，不催更、不吵闹，像一个小而温暖的工作室。用手机就能顺畅看高清，体验很好。</p>
+              <div class="peach-comment-card__stars">★★★★★</div>
+            </article>
+            <article class="peach-comment-card">
+              <div class="peach-comment-card__head">
+                <span class="peach-avatar peach-avatar--e">小</span>
+                <div>
+                  <div class="peach-comment-card__name">小满未满</div>
+                  <div class="peach-comment-card__meta">关注 2 个月</div>
+                </div>
+              </div>
+              <p class="peach-comment-card__text">投稿入口比想象中方便，提交后还收到了运营的修改建议，态度很认真，能感觉到平台是在认真对待创作者。</p>
+              <div class="peach-comment-card__stars">★★★★★</div>
+            </article>
+            <article class="peach-comment-card">
+              <div class="peach-comment-card__head">
+                <span class="peach-avatar peach-avatar--b">白</span>
+                <div>
+                  <div class="peach-comment-card__name">白桃乌龙茶</div>
+                  <div class="peach-comment-card__meta">关注 5 个月</div>
+                </div>
+              </div>
+              <p class="peach-comment-card__text">专题做得有逻辑，不是简单堆视频。希望品牌动态可以再多一点，想了解幕后拍摄的故事。</p>
+              <div class="peach-comment-card__stars">★★★★☆</div>
+            </article>
+          </div>
+          <div class="peach-board">
+            <div class="peach-board__col">
+              <h3 class="peach-board__title">本周热度榜 <span>更新中</span></h3>
+              <ol class="peach-board__list">
+                <li><span class="peach-board__rank">1</span><span class="peach-board__name">把秋天装进玻璃罐</span><span class="peach-board__score">24.6w</span></li>
+                <li><span class="peach-board__rank">2</span><span class="peach-board__name">地铁尽头的花店</span><span class="peach-board__score">18.3w</span></li>
+                <li><span class="peach-board__rank">3</span><span class="peach-board__name">白桃色卧室改造</span><span class="peach-board__score">21.5w</span></li>
+                <li><span class="peach-board__rank">4</span><span class="peach-board__name">一分钟日常挑战</span><span class="peach-board__score">15.2w</span></li>
+                <li><span class="peach-board__rank">5</span><span class="peach-board__name">旧毛衣的第二次生命</span><span class="peach-board__score">9.7w</span></li>
+              </ol>
+            </div>
+            <div class="peach-board__col">
+              <h3 class="peach-board__title">新人榜 <span>本周</span></h3>
+              <ol class="peach-board__list">
+                <li><span class="peach-board__rank">1</span><span class="peach-board__name">青禾手记</span><span class="peach-board__score">+1.2k</span></li>
+                <li><span class="peach-board__rank">2</span><span class="peach-board__name">一只小橘</span><span class="peach-board__score">+980</span></li>
+                <li><span class="peach-board__rank">3</span><span class="peach-board__name">晚风邮递员</span><span class="peach-board__score">+860</span></li>
+                <li><span class="peach-board__rank">4</span><span class="peach-board__name">青柠薄荷</span><span class="peach-board__score">+740</span></li>
+                <li><span class="peach-board__rank">5</span><span class="peach-board__name">拾光小记</span><span class="peach-board__score">+650</span></li>
+              </ol>
+            </div>
+            <div class="peach-board__col">
+              <h3 class="peach-board__title">口碑榜 <span>综合</span></h3>
+              <ol class="peach-board__list">
+                <li><span class="peach-board__rank">1</span><span class="peach-board__name">桃子汽水</span><span class="peach-board__score">4.9</span></li>
+                <li><span class="peach-board__rank">2</span><span class="peach-board__name">阿桃的镜头</span><span class="peach-board__score">4.8</span></li>
+                <li><span class="peach-board__rank">3</span><span class="peach-board__name">软糖不软</span><span class="peach-board__score">4.8</span></li>
+                <li><span class="peach-board__rank">4</span><span class="peach-board__name">七七与植物</span><span class="peach-board__score">4.7</span></li>
+                <li><span class="peach-board__rank">5</span><span class="peach-board__name">半糖去冰</span><span class="peach-board__score">4.7</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M10 企业动态 + M12 FAQ -->
+    <section class="peach-section" id="faq">
+      <div class="peach-container">
+        <div class="peach-two-col">
+          <div>
+            <div class="peach-section__head" style="margin-bottom:24px;">
+              <div class="peach-section__eyebrow">Newsroom</div>
+              <h2 class="peach-section__title">企业动态与官方发布</h2>
+            </div>
+            <ul class="peach-news">
+              <li class="peach-news__item">
+                <div class="peach-news__date">11.18<small>2026</small></div>
+                <div class="peach-news__body">
+                  <h3 class="peach-news__title">「秋日限定」专题正式上线，收录 6 支原创短片</h3>
+                  <p class="peach-news__text">由桃子汽水、阿桃的镜头等创作者共同完成，围绕秋季居家与手作场景展开。</p>
+                </div>
+              </li>
+              <li class="peach-news__item">
+                <div class="peach-news__date">11.10<small>2026</small></div>
+                <div class="peach-news__body">
+                  <h3 class="peach-news__title">创作者扶持计划第 3 期开启报名</h3>
+                  <p class="peach-news__text">面向所有社区创作者开放，提供拍摄指导、流量曝光与官方专题合作机会。</p>
+                </div>
+              </li>
+              <li class="peach-news__item">
+                <div class="peach-news__date">10.28<small>2026</small></div>
+                <div class="peach-news__body">
+                  <h3 class="peach-news__title">官方网站播放体验升级，高清加载更稳定</h3>
+                  <p class="peach-news__text">优化了移动端播放与收藏同步逻辑，社区用户可在多端保持观看记录。</p>
+                </div>
+              </li>
+              <li class="peach-news__item">
+                <div class="peach-news__date">10.12<small>2026</small></div>
+                <div class="peach-news__body">
+                  <h3 class="peach-news__title">「一分钟日常」投稿挑战累计收到 420 份作品</h3>
+                  <p class="peach-news__text">社区投票通道持续开放，优秀作品将在官方首页与专题页展示。</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="peach-section__head" style="margin-bottom:24px;">
+              <div class="peach-section__eyebrow">Help Center</div>
+              <h2 class="peach-section__title">常见问题 · <em>白桃少女</em>帮助</h2>
+            </div>
+            <div class="peach-faq">
+              <details open>
+                <summary>白桃少女官网的内容可以免费观看吗？</summary>
+                <div class="peach-faq__answer">官方网站所有公开视频均可免费在线观看，不设付费墙。我们坚持高清、正版的观看体验，部分专题内容会在首页优先推荐。</div>
+              </details>
+              <details>
+                <summary>如何向白桃少女投稿自己的作品？</summary>
+                <div class="peach-faq__answer">页面提供投稿入口，填写作品名称、简介与联系方式即可提交。运营团队会在 5 个工作日内给出反馈，通过后会安排上线与推荐。</div>
+              </details>
+              <details>
+                <summary>创作者扶持计划怎么报名？</summary>
+                <div class="peach-faq__answer">关注公告条与品牌动态即可获取报名信息。计划面向所有社区创作者，不设粉丝门槛，重点评估作品的原创性与完成度。</div>
+              </details>
+              <details>
+                <summary>视频可以下载或转载吗？</summary>
+                <div class="peach-faq__answer">未经授权请勿下载、搬运或二次剪辑。如需合作转载，请通过页面联系入口提交申请，我们会与创作者确认后回复。</div>
+              </details>
+              <details>
+                <summary>如何反馈内容或举报问题？</summary>
+                <div class="peach-faq__answer">每个视频卡片均提供反馈入口，也可通过页脚联系邮箱提交。涉及版权与不当内容的反馈会优先处理，一般在 48 小时内响应。</div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M11 合作品牌 + M13 投稿 CTA -->
+    <section class="peach-section peach-section--soft" id="cooperation">
+      <div class="peach-container">
+        <div class="peach-section__head">
+          <div class="peach-section__eyebrow">Partners</div>
+          <h2 class="peach-section__title">合作品牌与<em>白桃少女</em>内容伙伴</h2>
+          <p class="peach-section__sub">与关注生活品质的品牌一起，支持原创影像与社区创作，共同建设有温度的内容生态。</p>
+        </div>
+        <div class="peach-partners" style="margin-bottom:32px;">
+          <div class="peach-partner"><span class="peach-partner__dot" style="background:#e8638c;"></span>晨光生活研究所</div>
+          <div class="peach-partner"><span class="peach-partner__dot" style="background:#b77dc1;"></span>片刻咖啡</div>
+          <div class="peach-partner"><span class="peach-partner__dot" style="background:#9bc48a;"></span>青禾织物</div>
+          <div class="peach-partner"><span class="peach-partner__dot" style="background:#e8a865;"></span>小满自然</div>
+          <div class="peach-partner"><span class="peach-partner__dot" style="background:#7fb8d4;"></span>慢递书店</div>
+        </div>
+        <div class="peach-cta">
+          <div>
+            <h2 class="peach-cta__title">把你的真实日常，投递给白桃少女</h2>
+            <p class="peach-cta__desc">无论是 60 秒短片还是一段拍摄素材，只要来自真实生活，都值得被认真看见。官方投稿通道持续开放。</p>
+          </div>
+          <button class="peach-btn peach-btn--primary" id="peachSubmitBtn" type="button">我要投稿 →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- S8 页脚 -->
+  <footer class="peach-footer">
+    <div class="peach-container">
+      <div class="peach-footer__grid">
+        <div>
+          <div class="peach-footer__brand">
+            <span class="peach-footer__brand-dot"></span>白桃少女
+          </div>
+          <p class="peach-footer__desc">白桃少女官方网站 · 一个专注于少女感生活方式的视频品牌社区。我们坚持原创、正版与高清内容，持续为创作者与观众提供值得信赖的观看与交流空间。</p>
+        </div>
+        <div class="peach-footer__col">
+          <h4>内容</h4>
+          <ul>
+            <li><a href="#feature">焦点视频</a></li>
+            <li><a href="#videos">热门内容</a></li>
+            <li><a href="#special">专题企划</a></li>
+          </ul>
+        </div>
+        <div class="peach-footer__col">
+          <h4>社区</h4>
+          <ul>
+            <li><a href="#creators">创作者矩阵</a></li>
+            <li><a href="#comments">社区口碑</a></li>
+            <li><a href="#faq">帮助中心</a></li>
+          </ul>
+        </div>
+        <div class="peach-footer__col">
+          <h4>关于</h4>
+          <ul>
+            <li><a href="#brandstory">品牌故事</a></li>
+            <li><a href="#cooperation">合作联系</a></li>
+            <li><a href="#faq">投稿说明</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="peach-footer__bottom">
+        <span>© 2026 白桃少女 官方网站 · 版权所有 | 持续运营中</span>
+        <span>备案号：备 20261122 号 · 官方发布</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button class="peach-backtop" id="peachBackTop" type="button" aria-label="回到顶部">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- 通用弹窗 -->
+  <div class="peach-modal-mask" id="peachModalMask" aria-hidden="true">
+    <div class="peach-modal" role="dialog" aria-modal="true" aria-labelledby="peachModalTitle">
+      <button class="peach-modal__close" id="peachModalClose" aria-label="关闭弹窗">✕</button>
+      <h2 class="peach-modal__title" id="peachModalTitle">提示</h2>
+      <p class="peach-modal__text" id="peachModalText">内容</p>
+      <div id="peachModalExtra"></div>
+      <div class="peach-modal__actions">
+        <button class="peach-btn peach-btn--ghost" id="peachModalCancel" type="button">取消</button>
+        <button class="peach-btn peach-btn--primary" id="peachModalOk" type="button">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="peach-toast" id="peachToast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var toastTimer = null;
+      function showToast(msg) {
+        var t = document.getElementById("peachToast");
+        if (!t) return;
+        t.textContent = msg;
+        t.classList.add("is-show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          t.classList.remove("is-show");
+        }, 2200);
+      }
+
+      /* 移动端导航折叠 */
+      var menuToggle = document.getElementById("peachMenuToggle");
+      var mainNav = document.getElementById("peachMainNav");
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", function () {
+          var open = mainNav.classList.toggle("is-open");
+          menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        mainNav.addEventListener("click", function (e) {
+          if (e.target.closest("a")) {
+            mainNav.classList.remove("is-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      /* 搜索提示反馈 */
+      var searchForm = document.getElementById("peachSearchForm");
+      var searchInput = document.getElementById("peachSearchInput");
+      if (searchForm && searchInput) {
+        searchForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var q = searchInput.value.trim();
+          if (!q) {
+            showToast("请输入你想搜索的视频或创作者");
+            searchInput.focus();
+            return;
+          }
+          showToast("正在为你搜索「" + q + "」，可在焦点与热门内容中查看");
+        });
+      }
+
+      /* 点赞 / 收藏切换（含数字变化） */
+      document.addEventListener("click", function (e) {
+        var likeBtn = e.target.closest("[data-like]");
+        if (likeBtn) {
+          var pressed = likeBtn.getAttribute("aria-pressed") === "true";
+          likeBtn.setAttribute("aria-pressed", pressed ? "false" : "true");
+          likeBtn.classList.toggle("is-liked", !pressed);
+          var likeNum = likeBtn.querySelector("[data-like-count]");
+          if (likeNum) {
+            var n = parseInt(likeNum.textContent.replace(/[^\d]/g, ""), 10) || 0;
+            n = pressed ? Math.max(0, n - 1) : n + 1;
+            likeNum.textContent = n;
+          } else {
+            likeBtn.textContent = pressed ? "♡" : "♥";
+          }
+          showToast(pressed ? "已取消点赞" : "感谢你的点赞");
+          return;
+        }
+
+        var saveBtn = e.target.closest("[data-save]");
+        if (saveBtn) {
+          var saved = saveBtn.getAttribute("aria-pressed") === "true";
+          saveBtn.setAttribute("aria-pressed", saved ? "false" : "true");
+          saveBtn.classList.toggle("is-saved", !saved);
+          var saveNum = saveBtn.querySelector("[data-save-count]");
+          if (saveNum) {
+            var m = parseInt(saveNum.textContent.replace(/[^\d]/g, ""), 10) || 0;
+            m = saved ? Math.max(0, m - 1) : m + 1;
+            saveNum.textContent = m;
+          } else {
+            saveBtn.textContent = saved ? "☆" : "★";
+          }
+          showToast(saved ? "已取消收藏" : "已加入收藏");
+          return;
+        }
+
+        var copyBtn = e.target.closest("[data-copy]");
+        if (copyBtn) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href.split("#")[0] + "#hero")
+              .then(function () { showToast("链接已复制，欢迎分享白桃少女"); })
+              .catch(function () { showToast("复制失败，请手动复制页面地址"); });
+          } else {
+            showToast("复制失败，请手动复制页面地址");
+          }
+          return;
+        }
+      });
+
+      /* 弹窗封装 */
+      var mask = document.getElementById("peachModalMask");
+      var modalTitle = document.getElementById("peachModalTitle");
+      var modalText = document.getElementById("peachModalText");
+      var modalExtra = document.getElementById("peachModalExtra");
+      var modalOk = document.getElementById("peachModalOk");
+      var modalCancel = document.getElementById("peachModalCancel");
+      var modalClose = document.getElementById("peachModalClose");
+      var lastFocus = null;
+
+      function openModal(title, text, extraHtml, okText) {
+        lastFocus = document.activeElement;
+        modalTitle.textContent = title;
+        modalText.textContent = text;
+        modalExtra.innerHTML = extraHtml || "";
+        modalOk.textContent = okText || "确定";
+        mask.classList.add("is-open");
+        mask.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        modalOk.focus();
+      }
+
+      function closeModal() {
+        mask.classList.remove("is-open");
+        mask.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      if (mask) {
+        modalClose.addEventListener("click", closeModal);
+        modalCancel.addEventListener("click", closeModal);
+        modalOk.addEventListener("click", function () {
+          var submit = modalExtra.querySelector("textarea, input");
+          if (submit && submit.value.trim() === "" && mask.getAttribute("data-need-input") === "1") {
+            showToast("请先填写内容");
+            submit.focus();
+            return;
+          }
+          showToast("已收到你的信息，感谢支持白桃少女");
+          closeModal();
+        });
+        mask.addEventListener("click", function (e) {
+          if (e.target === mask) closeModal();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && mask.classList.contains("is-open")) closeModal();
+        });
+      }
+
+      /* 评论弹窗 */
+      document.addEventListener("click", function (e) {
+        if (e.target.closest("[data-comment-open]")) {
+          mask.setAttribute("data-need-input", "1");
+          openModal(
+            "参与评论",
+            "说说你观看这支短片的感受吧，友善的交流会让社区更温暖。",
+            "<textarea class=\"peach-modal__field\" rows=\"3\" placeholder=\"写下你的评论……\" aria-label=\"评论内容\"></textarea><p style=\"font-size:12px;color:#897a83;\">评论将经过审核后才展示。</p>",
+            "发布评论"
+          );
+        }
+      });
+
+      /* 作者信息弹窗 */
+      document.addEventListener("click", function (e) {
+        var authorBtn = e.target.closest("[data-author-open]");
+        if (authorBtn) {
+          mask.setAttribute("data-need-input", "0");
+          var name = authorBtn.getAttribute("data-author") || "这位创作者";
+          openModal(
+            name + " · 创作者档案",
+            "擅长用影像记录真实生活，作品持续在白桃少女官方网站更新。欢迎关注，也欢迎在评论区交流创作心得。",
+            "<div style=\"background:#fdf0f4;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.8;color:#4a3a44;\"><strong>合作方向：</strong>日常记录 / 城市探索 / 手作DIY<br><strong>作品状态：</strong>持续更新中 · 官方认证创作者</div>",
+            "关注创作者"
+          );
+        }
+      });
+
+      /* 投稿弹窗 */
+      var submitBtn = document.getElementById("peachSubmitBtn");
+      if (submitBtn) {
+        submitBtn.addEventListener("click", function () {
+          mask.setAttribute("data-need-input", "1");
+          openModal(
+            "向白桃少女投稿",
+            "留下你的作品名称与联系方式，运营团队会在 5 个工作日内联系你。",
+            "<input class=\"peach-modal__field\" type=\"text\" placeholder=\"作品名称\" aria-label=\"作品名称\"><input class=\"peach-modal__field\" type=\"text\" placeholder=\"联系方式（邮箱或手机）\" aria-label=\"联系方式\">",
+            "提交投稿"
+          );
+        });
+      }
+
+      /* 分享按钮 */
+      var shareBtn = document.getElementById("peachShareBtn");
+      if (shareBtn) {
+        shareBtn.addEventListener("click", function () {
+          mask.setAttribute("data-need-input", "0");
+          openModal(
+            "分享白桃少女",
+            "把官方网站分享给同样热爱生活影像的朋友，一起在社区里发现更多温暖内容。",
+            "<div style=\"display:flex;gap:10px;flex-wrap:wrap;\">" +
+              "<span style=\"flex:1;min-width:100px;text-align:center;background:#fdf0f4;border-radius:10px;padding:12px 8px;font-size:13px;font-weight:600;color:#c94a72;\">微信</span>" +
+              "<span style=\"flex:1;min-width:100px;text-align:center;background:#fdf0f4;border-radius:10px;padding:12px 8px;font-size:13px;font-weight:600;color:#c94a72;\">微博</span>" +
+              "<span style=\"flex:1;min-width:100px;text-align:center;background:#fdf0f4;border-radius:10px;padding:12px 8px;font-size:13px;font-weight:600;color:#c94a72;\">QQ</span>" +
+            "</div>",
+            "知道了"
+          );
+        });
+      }
+
+      /* 回到顶部 */
+      var backTop = document.getElementById("peachBackTop");
+      if (backTop) {
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 480) {
+            backTop.classList.add("is-visible");
+          } else {
+            backTop.classList.remove("is-visible");
+          }
+        }, { passive: true });
+        backTop.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      /* 数字滚动（简单实现，尊重减弱动效偏好） */
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduceMotion) {
+        var counters = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
+        var counted = false;
+        function animateCounters() {
+          if (counted) return;
+          counted = true;
+          counters.forEach(function (el) {
+            var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+            var suffix = el.querySelector("span") ? el.querySelector("span").outerHTML : "";
+            var start = null;
+            var duration = 1100;
+            function step(ts) {
+              if (!start) start = ts;
+              var p = Math.min((ts - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - p, 3);
+              el.innerHTML = Math.round(target * eased) + (suffix && p < 1 ? "" : suffix);
+              if (p < 1) requestAnimationFrame(step);
+              else el.innerHTML = target + suffix;
+            }
+            requestAnimationFrame(step);
+          });
+        }
+        if ("IntersectionObserver" in window) {
+          var statBox = document.querySelector(".peach-hero__stats");
+          if (statBox) {
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  animateCounters();
+                  io.disconnect();
+                }
+              });
+            }, { threshold: 0.4 });
+            io.observe(statBox);
+          }
+        } else {
+          animateCounters();
+        }
+      }
+    })();
+  </script>
+</body>
+                    </html>
